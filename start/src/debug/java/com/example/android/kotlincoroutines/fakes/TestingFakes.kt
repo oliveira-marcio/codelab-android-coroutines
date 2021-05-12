@@ -111,38 +111,5 @@ class MainNetworkCompletableFake() : MainNetwork {
         completable.completeExceptionally(throwable)
         completable = CompletableDeferred()
     }
-
 }
 
-typealias MakeCompilerHappyForStarterCode = FakeCallForRetrofit<String>
-
-/**
- * This class only exists to make the starter code compile. Remove after refactoring retrofit to use
- * suspend functions.
- */
-class FakeCallForRetrofit<T> : Call<T> {
-    override fun enqueue(callback: Callback<T>) {
-        // nothing
-    }
-
-    override fun isExecuted() = false
-
-    override fun clone(): Call<T> {
-        return this
-    }
-
-    override fun isCanceled() = true
-
-    override fun cancel() {
-        // nothing
-    }
-
-    override fun execute(): Response<T> {
-        TODO("Not implemented")
-    }
-
-    override fun request(): Request {
-        TODO("Not implemented")
-    }
-
-}
